@@ -18,13 +18,17 @@ void uniqueCompAtHome(FILE* fp){
 		//and that it doesnt even go through the print if the lines arent equal length
 		if(lineBefore == NULL || strcmp(lineBefore,lineRead) != 0 ){
 			printf("%s", lineRead);
-			free(lineBefore);
-			char* tmpPtr = lineRead;
+			char* tmpPtr = lineBefore;
 
 			lineBeforeSize = lineSize;
 			lineBefore = lineRead;
+			
+			lineRead = tmpPtr;
 		}	
-	}	
+	}
+
+	free(lineRead);
+	free(lineBefore);	
 }
 
 int main(int argc, char *argv[])  {
